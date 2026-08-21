@@ -1445,10 +1445,10 @@
         }
 
         function loginWithGoogleQuick() {
-            const userEmail = prompt("Google / Gmail manzilingizni kiriting:", "abdulloh@gmail.com");
+            const userEmail = prompt("Google / Gmail manzilingizni kiriting (masalan: ismingiz@gmail.com):", "");
             if (!userEmail) return;
 
-            const userName = prompt("Ismingiz (Google profil ismi):", "Abdulloh Erkinov") || userEmail.split('@')[0];
+            const userName = prompt("Ismingiz va Familiyangizni kiriting:", "") || userEmail.split('@')[0];
 
             currentUser = {
                 name: userName,
@@ -1459,7 +1459,7 @@
             };
             localStorage.setItem('uzpass_user', JSON.stringify(currentUser));
             onUserAuthenticated();
-            showToast('Google Account Connected!', 'fa-circle-check', `${currentUser.name} (${currentUser.email})`);
+            showToast('Google Account Connected!', 'fa-circle-check', `${currentUser.name}`);
             closeAuthModal();
             openProfileModal();
         }
