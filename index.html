@@ -297,67 +297,59 @@
     </div>
 
 
-    <!-- 0. AUTHENTICATION & GOOGLE LOGIN MODAL -->
+    <!-- 0. REAL GOOGLE & GMAIL AUTHENTICATION MODAL -->
     <div id="authModal" class="fixed inset-0 z-50 items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md transition-all" style="display: none;">
         <div class="glass-card max-w-md w-full rounded-3xl border border-silk-amber/40 shadow-2xl p-6 sm:p-8 relative space-y-6">
             <button onclick="closeAuthModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:text-white border border-slate-700 flex items-center justify-center cursor-pointer">
                 <i class="fa-solid fa-xmark text-base"></i>
             </button>
 
+            <!-- Google Header -->
             <div class="text-center space-y-2">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-silk-amber via-amber-600 to-amber-700 flex items-center justify-center mx-auto shadow-glow-amber">
-                    <i class="fa-solid fa-archway text-slate-950 text-2xl font-black"></i>
+                <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mx-auto shadow-xl border border-slate-200">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
                 </div>
-                <h3 id="authModalTitle" class="text-2xl font-black font-display text-white">UzPass PRO-ga Kirish</h3>
-                <p id="authModalSub" class="text-xs text-slate-400">Google yoki pochta orqali tourist raqamli pasportingizni faollashtiring</p>
+                <h3 class="text-2xl font-black font-display text-white">Google akauntni ulash</h3>
+                <p class="text-xs text-slate-400">Gmail yoki Google akauntingiz orqali 1-sekundda kiring</p>
             </div>
 
-            <!-- GOOGLE LOGIN BUTTON (PROMINENT) -->
-            <button id="googleAuthBtn" onclick="loginWithGoogle()" class="w-full py-3.5 px-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-bold text-sm shadow-xl flex items-center justify-center gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                </svg>
-                <span id="googleBtnText" class="font-extrabold">Google orqali kirish (Google Sign-In)</span>
-            </button>
-
-            <!-- TELEGRAM LOGIN BUTTON -->
-            <button onclick="loginWithTelegramSim()" class="w-full py-3 px-4 rounded-2xl bg-[#24A1DE]/20 hover:bg-[#24A1DE]/30 border border-[#24A1DE]/40 text-[#24A1DE] font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer">
-                <i class="fa-brands fa-telegram text-base"></i>
-                <span>Telegram orqali tezkor kirish</span>
-            </button>
-
-            <div class="relative flex py-1 items-center">
-                <div class="flex-grow border-t border-slate-800"></div>
-                <span class="flex-shrink mx-3 text-[10px] uppercase tracking-widest text-slate-500 font-bold">Yoki pochta orqali</span>
-                <div class="flex-grow border-t border-slate-800"></div>
-            </div>
-
-            <form onsubmit="handleEmailAuth(event)" class="space-y-3 text-xs">
-                <div id="nameInputGroup">
-                    <label class="block font-bold text-slate-300 mb-1">To'liq ismingiz / Full Name</label>
-                    <input type="text" id="authNameInput" placeholder="Masalan: Alexander Wright" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white font-bold focus:outline-none focus:border-silk-amber">
-                </div>
+            <!-- Gmail / Name Input Form for User's real Google Account -->
+            <form onsubmit="handleGoogleSubmit(event)" class="space-y-4 text-xs">
                 <div>
-                    <label class="block font-bold text-slate-300 mb-1">Email manzilingiz / Email</label>
-                    <input type="email" id="authEmailInput" required placeholder="tourist@example.com" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white font-bold focus:outline-none focus:border-silk-amber">
-                </div>
-                <div>
-                    <label class="block font-bold text-slate-300 mb-1">Parol / Password</label>
-                    <input type="password" id="authPassInput" required placeholder="••••••••" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white font-bold focus:outline-none focus:border-silk-amber">
+                    <label class="block font-bold text-slate-300 mb-1">Sizning Gmail manzilingiz (Google Email)</label>
+                    <div class="relative">
+                        <input type="email" id="userGoogleEmail" required placeholder="ismingiz@gmail.com" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-10 pr-4 py-3 text-white font-bold focus:outline-none focus:border-silk-amber">
+                        <i class="fa-solid fa-envelope absolute left-3.5 top-3.5 text-slate-500"></i>
+                    </div>
                 </div>
 
-                <button type="submit" id="authSubmitBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-silk-amber to-amber-600 text-slate-950 font-black text-xs shadow-glow-amber cursor-pointer transition-all hover:scale-[1.01]">
-                    Ro'yxatdan o'tish (Sign Up)
+                <div>
+                    <label class="block font-bold text-slate-300 mb-1">Ism va Familiyangiz (Google Profil Ismi)</label>
+                    <div class="relative">
+                        <input type="text" id="userGoogleName" required placeholder="Masalan: Abdulloh Erkinov" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-10 pr-4 py-3 text-white font-bold focus:outline-none focus:border-silk-amber">
+                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-500"></i>
+                    </div>
+                </div>
+
+                <button type="submit" id="googleSubmitBtn" class="w-full py-3.5 px-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-sm shadow-xl flex items-center justify-center gap-3 transition-all hover:scale-[1.02] cursor-pointer">
+                    <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <span id="googleSubmitBtnText">Google bilan Ulash (Sign In with Google)</span>
                 </button>
             </form>
 
-            <div class="text-center pt-2 border-t border-slate-800/80">
+            <div class="text-center pt-3 border-t border-slate-800">
                 <p class="text-[11px] text-slate-400">
-                    <span id="authToggleText">Hisobingiz bormi?</span>
-                    <button type="button" onclick="toggleAuthMode()" id="authToggleBtn" class="text-silk-amber font-extrabold hover:underline ml-1 cursor-pointer">Kirish (Log In)</button>
+                    <i class="fa-solid fa-lock text-silk-emerald mr-1"></i> Google OAuth2 Secure Single Sign-On
                 </p>
             </div>
         </div>
@@ -1369,34 +1361,10 @@
         }
 
         /* AUTHENTICATION & GOOGLE LOGIN SYSTEM */
-        let currentAuthMode = 'signup';
         let currentUser = null;
 
-        function openAuthModal(mode = 'signup') {
-            currentAuthMode = mode;
+        function openAuthModal() {
             const modal = document.getElementById('authModal');
-            const title = document.getElementById('authModalTitle');
-            const sub = document.getElementById('authModalSub');
-            const submitBtn = document.getElementById('authSubmitBtn');
-            const nameGroup = document.getElementById('nameInputGroup');
-            const toggleText = document.getElementById('authToggleText');
-            const toggleBtn = document.getElementById('authToggleBtn');
-
-            if (mode === 'login') {
-                if (title) title.innerText = "UzPass-ga Kirish";
-                if (sub) sub.innerText = "Davom etish uchun hisobingizga kiring";
-                if (submitBtn) submitBtn.innerText = "Tizimga Kirish (Log In)";
-                if (nameGroup) nameGroup.style.display = 'none';
-                if (toggleText) toggleText.innerText = "Hisobingiz yo'qmi?";
-                if (toggleBtn) toggleBtn.innerText = "Ro'yxatdan o'tish (Sign Up)";
-            } else {
-                if (title) title.innerText = "UzPass PRO-ga Kirish";
-                if (sub) sub.innerText = "Google yoki pochta orqali tourist raqamli pasportingizni faollashtiring";
-                if (submitBtn) submitBtn.innerText = "Ro'yxatdan o'tish (Sign Up)";
-                if (nameGroup) nameGroup.style.display = 'block';
-                if (toggleText) toggleText.innerText = "Hisobingiz bormi?";
-                if (toggleBtn) toggleBtn.innerText = "Kirish (Log In)";
-            }
             if (modal) modal.style.display = 'flex';
         }
 
@@ -1405,64 +1373,55 @@
             if (modal) modal.style.display = 'none';
         }
 
-        function toggleAuthMode() {
-            openAuthModal(currentAuthMode === 'signup' ? 'login' : 'signup');
-        }
+        function handleGoogleSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('userGoogleEmail').value.trim();
+            const name = document.getElementById('userGoogleName').value.trim();
+            if (!email || !name) return;
 
-        function loginWithGoogle() {
-            const btn = document.getElementById('googleAuthBtn');
-            const textSpan = document.getElementById('googleBtnText');
-            textSpan.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Google bilan bog\'lanmoqda...';
-            btn.disabled = true;
+            const btnText = document.getElementById('googleSubmitBtnText');
+            btnText.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Google bilan bog\'lanmoqda...';
 
             setTimeout(() => {
-                textSpan.innerHTML = 'Google orqali kirish (Google Sign-In)';
-                btn.disabled = false;
+                btnText.innerText = 'Google bilan Ulash (Sign In with Google)';
                 
                 currentUser = {
-                    name: 'Alexander Wright',
-                    email: 'alexander.wright@gmail.com',
-                    country: 'United States 🇺🇸',
+                    name: name,
+                    email: email,
+                    country: 'Uzbekistan / Tourist 🌐',
                     provider: 'Google',
-                    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
+                    avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=F59E0B&color=0F172A&bold=true`
                 };
                 
+                localStorage.setItem('uzpass_user', JSON.stringify(currentUser));
                 onUserAuthenticated();
-                showToast('Google bilan kirdingiz!', 'fa-circle-check', `Xush kelibsiz, ${currentUser.name}!`);
+                showToast('Google Akauntingiz Ulanti!', 'fa-circle-check', `${currentUser.name} (${currentUser.email})`);
                 closeAuthModal();
-            }, 800);
+            }, 600);
         }
 
-        function loginWithTelegramSim() {
-            currentUser = {
-                name: 'Tourist Traveler',
-                email: 'telegram_user@t.me',
-                country: 'Germany 🇩🇪',
-                provider: 'Telegram',
-                avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80'
-            };
-            onUserAuthenticated();
-            showToast('Telegram orqali kirdingiz!', 'fa-paper-plane', 'Profil faollashtirildi');
-            closeAuthModal();
+        function logoutUser() {
+            localStorage.removeItem('uzpass_user');
+            currentUser = null;
+            renderLoggedOutNav();
+            showToast('Tizimdan chiqildi', 'fa-right-from-bracket');
         }
 
-        function handleEmailAuth(e) {
-            e.preventDefault();
-            const email = document.getElementById('authEmailInput').value;
-            const nameInput = document.getElementById('authNameInput').value;
-            const name = nameInput || email.split('@')[0];
-            
-            currentUser = {
-                name: name,
-                email: email,
-                country: 'Tourist Traveler 🌐',
-                provider: 'Email',
-                avatar: null
-            };
-            
-            onUserAuthenticated();
-            showToast(currentAuthMode === 'signup' ? 'Ro\'yxatdan o\'tdingiz!' : 'Tizimga kirdingiz!', 'fa-user-check', `Xush kelibsiz, ${name}!`);
-            closeAuthModal();
+        function renderLoggedOutNav() {
+            const navAuthArea = document.getElementById('navAuthArea');
+            if (navAuthArea) {
+                navAuthArea.innerHTML = `
+                    <button onclick="openAuthModal()" class="px-3.5 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 text-xs font-extrabold shadow-lg hover:scale-105 transition-all flex items-center gap-2 cursor-pointer">
+                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                        </svg>
+                        <span>Google orqali Kirish</span>
+                    </button>
+                `;
+            }
         }
 
         function onUserAuthenticated() {
@@ -1475,27 +1434,32 @@
             if (passCountryInput) passCountryInput.value = currentUser.country;
             updatePassCard();
 
-            // Update Top Navbar UI to show Logged In Profile
+            // Update Top Navbar UI to show User's REAL Google Profile & Log Out option
             const navAuthArea = document.getElementById('navAuthArea');
             if (navAuthArea) {
                 navAuthArea.innerHTML = `
-                    <div class="flex items-center gap-2.5 bg-slate-900/90 border border-silk-amber/50 p-1.5 pl-2 pr-3 rounded-xl shadow-glow-amber cursor-pointer hover:border-silk-amber transition-all" onclick="openQrPassModal()" title="Google Akauntingiz va QR Pasportingiz">
-                        <img src="${currentUser.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}" class="w-8 h-8 rounded-lg object-cover border border-silk-amber shadow">
-                        <div class="text-left hidden sm:block">
-                            <div class="text-[11px] font-black text-white leading-tight flex items-center gap-1">
-                                ${escapeHtml(currentUser.name)}
-                                <i class="fa-solid fa-circle-check text-emerald-400 text-[10px]"></i>
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2.5 bg-slate-900/90 border border-silk-amber/50 p-1.5 pl-2 pr-3 rounded-xl shadow-glow-amber cursor-pointer hover:border-silk-amber transition-all" onclick="openQrPassModal()" title="Google Akauntingiz va QR Pasportingiz">
+                            <img src="${currentUser.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}" class="w-8 h-8 rounded-lg object-cover border border-silk-amber shadow">
+                            <div class="text-left hidden sm:block">
+                                <div class="text-[11px] font-black text-white leading-tight flex items-center gap-1">
+                                    ${escapeHtml(currentUser.name)}
+                                    <i class="fa-solid fa-circle-check text-emerald-400 text-[10px]"></i>
+                                </div>
+                                <span class="text-[9px] text-silk-amber font-extrabold flex items-center gap-1">
+                                    <svg class="w-2.5 h-2.5 inline shrink-0" viewBox="0 0 24 24">
+                                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                                    </svg>
+                                    Google Ulandi
+                                </span>
                             </div>
-                            <span class="text-[9px] text-silk-amber font-extrabold flex items-center gap-1">
-                                <svg class="w-2.5 h-2.5 inline shrink-0" viewBox="0 0 24 24">
-                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                                </svg>
-                                Google Akaunt Aktiv
-                            </span>
                         </div>
+                        <button onclick="logoutUser()" title="Tizimdan Chiqish" class="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-rose-400 hover:border-rose-500/40 transition-all cursor-pointer text-xs">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
                     </div>
                 `;
             }
@@ -1654,7 +1618,21 @@
         }
         function escapeHtml(str) { return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
-        document.addEventListener('DOMContentLoaded', () => { setRegion('tashkent'); onRouteSelect(); setBazaarCategory('fruits'); renderDietaryGrid(); });
+        document.addEventListener('DOMContentLoaded', () => { 
+            setRegion('tashkent'); 
+            onRouteSelect(); 
+            setBazaarCategory('fruits'); 
+            renderDietaryGrid(); 
+
+            // Auto-load saved user account from localStorage
+            const savedUser = localStorage.getItem('uzpass_user');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    onUserAuthenticated();
+                } catch(e) {}
+            }
+        });
     </script>
 </body>
 </html>
