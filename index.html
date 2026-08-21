@@ -411,6 +411,7 @@
 
             <!-- Navigation Links -->
             <nav class="hidden lg:flex items-center gap-7 text-xs font-extrabold uppercase tracking-wider text-slate-300">
+                <a href="#regions" class="hover:text-silk-amber transition-colors flex items-center gap-1.5"><i class="fa-solid fa-compass text-silk-amber"></i> Regions</a>
                 <a href="#calculator" class="hover:text-silk-amber transition-colors flex items-center gap-1.5"><i class="fa-solid fa-calculator text-silk-amber"></i> Taxi Shield</a>
                 <a href="#bazaar" class="hover:text-silk-amber transition-colors flex items-center gap-1.5"><i class="fa-solid fa-store text-silk-sky"></i> Bazaar Helper</a>
                 <a href="#apps" class="hover:text-silk-amber transition-colors flex items-center gap-1.5"><i class="fa-solid fa-mobile-screen text-silk-emerald"></i> Local Apps</a>
@@ -426,12 +427,12 @@
                     <span class="hidden sm:inline">Taklif va Shikoyat</span>
                 </button>
 
-                <!-- Multi-Language Switch -->
+                <!-- Multi-Language Switch (EN | UZ | RU) -->
                 <div class="hidden sm:flex items-center gap-1 p-1 rounded-xl bg-slate-900 border border-slate-800 text-[10px] font-black">
                     <button onclick="setLang('EN')" id="lang_EN" class="px-2 py-1 rounded-lg bg-silk-amber text-slate-950 shadow-glow-amber cursor-pointer">EN</button>
+                    <button onclick="setLang('UZ')" id="lang_UZ" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white cursor-pointer">UZ</button>
                     <button onclick="setLang('RU')" id="lang_RU" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white cursor-pointer">RU</button>
                     <button onclick="setLang('CN')" id="lang_CN" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white cursor-pointer">CN</button>
-                    <button onclick="setLang('DE')" id="lang_DE" class="px-2 py-1 rounded-lg text-slate-400 hover:text-white cursor-pointer">DE</button>
                 </div>
 
                 <button onclick="openAnalyticsModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-silk-amber/20 border border-silk-amber/40 text-silk-amber text-[11px] font-black hover:bg-silk-amber hover:text-slate-950 transition-all cursor-pointer shadow-glow-amber">
@@ -523,7 +524,7 @@
                                 </div>
                                 <div class="text-right">
                                     <span class="text-[10px] text-slate-400 font-bold uppercase block">Terminal Tout Demand</span>
-                                    <span class="text-base font-bold text-rose-400 line-through">300,000 UZS</span>
+                                    <span class="text-base font-bold text-rose-400 line-through">300,000 UZS ($25)</span>
                                 </div>
                             </div>
 
@@ -539,8 +540,44 @@
         </section>
 
 
+        <!-- INTERACTIVE REGION SELECTOR MODULE (Tashkent, Samarkand, Bukhara, Khiva) -->
+        <section id="regions" class="py-16 bg-slate-900/90 border-y border-slate-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-silk-amber font-extrabold text-xs uppercase tracking-widest"><i class="fa-solid fa-map-pin mr-1.5"></i> Region Selector</span>
+                    <h2 class="text-3xl sm:text-5xl font-black font-display text-white mt-2">Explore Uzbekistan Regions</h2>
+                    <p class="text-slate-300 text-sm sm:text-base mt-3">Select a historic region to reveal attraction tickets, working hours, authentic teahouses, and travel guides.</p>
+                </div>
+
+                <!-- Region Selector Pills -->
+                <div class="flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-8">
+                    <button onclick="setRegion('tashkent')" id="regBtn_tashkent" class="px-6 py-3 rounded-2xl text-xs font-black transition-all bg-silk-amber text-slate-950 shadow-glow-amber cursor-pointer">Tashkent</button>
+                    <button onclick="setRegion('samarkand')" id="regBtn_samarkand" class="px-6 py-3 rounded-2xl text-xs font-black transition-all bg-slate-800 text-slate-300 border border-slate-700 hover:text-white cursor-pointer">Samarkand</button>
+                    <button onclick="setRegion('bukhara')" id="regBtn_bukhara" class="px-6 py-3 rounded-2xl text-xs font-black transition-all bg-slate-800 text-slate-300 border border-slate-700 hover:text-white cursor-pointer">Bukhara</button>
+                    <button onclick="setRegion('khiva')" id="regBtn_khiva" class="px-6 py-3 rounded-2xl text-xs font-black transition-all bg-slate-800 text-slate-300 border border-slate-700 hover:text-white cursor-pointer">Khiva</button>
+                </div>
+
+                <!-- Region Glassmorphism Content Container -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-silk-amber/40 shadow-2xl space-y-6">
+                    
+                    <!-- Sub-tabs within selected region -->
+                    <div class="flex items-center gap-2 pb-4 border-b border-slate-800">
+                        <button onclick="setRegionSubTab('attractions')" id="regSub_attractions" class="px-4 py-2 rounded-xl text-xs font-black bg-silk-amber text-slate-950 cursor-pointer">Top Attractions</button>
+                        <button onclick="setRegionSubTab('cuisine')" id="regSub_cuisine" class="px-4 py-2 rounded-xl text-xs font-black bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer">Authentic Cuisine</button>
+                        <button onclick="setRegionSubTab('overview')" id="regSub_overview" class="px-4 py-2 rounded-xl text-xs font-black bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer">History & Overview</button>
+                    </div>
+
+                    <!-- Dynamic Region Card Content -->
+                    <div id="regionDynamicContent" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <!-- ENTERPRISE TRUST BAR -->
-        <section id="trustBar" class="py-6 bg-slate-950/80 border-y border-slate-800">
+        <section id="trustBar" class="py-6 bg-slate-950/80 border-b border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div class="flex items-center justify-center gap-2 p-2 text-xs font-extrabold text-slate-300">
@@ -927,6 +964,101 @@
         let currentVehicleTier = 'start';
         let currentBazaarCat = 'fruits';
         let currentDietFilter = 'all';
+        let currentSelectedRegion = 'tashkent';
+        let currentSelectedRegionSubTab = 'attractions';
+
+        const regionDataStore = {
+            'tashkent': {
+                'attractions': [
+                    { title: 'Chorsu Bazaar & Old City', hours: '08:00 - 19:00 Daily', price: 'Free Entry', desc: 'Iconic turquoise dome market with spices, ceramics, dried fruits, and hot somsa.', img: 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=600&q=80' },
+                    { title: 'Hazrati Imam Complex', hours: '09:00 - 18:00', price: '25,000 UZS Ticket', desc: 'Houses the 7th-century Holy Uthman Quran parchment manuscript.', img: 'https://images.unsplash.com/photo-1541518763669-27fef04b14da?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'cuisine': [
+                    { title: 'Besh Qozon Plov Center', hours: '11:00 - 16:00', price: '35,000 UZS / Port', desc: 'World famous giant cauldrons cooking Tashkent wedding lamb plov.', img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'overview': [
+                    { title: 'Tashkent Metropolitan Overview', hours: '24/7 Accessible', price: 'Metro: 2,000 UZS', desc: 'Capital city blending Soviet metro architecture with high-tech travel innovation.', img: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80' }
+                ]
+            },
+            'samarkand': {
+                'attractions': [
+                    { title: 'Registan Square & Madrassahs', hours: '08:00 - 20:00 Daily', price: '50,000 UZS Ticket', desc: 'Masterpiece of Islamic architecture featuring Ulugh Beg, Sher-Dor & Tilya-Kori.', img: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&q=80' },
+                    { title: 'Gur-e-Amir Mausoleum', hours: '09:00 - 19:00', price: '30,000 UZS Ticket', desc: 'The tomb of conqueror Amir Timur with dark green jade stone headpiece.', img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'cuisine': [
+                    { title: 'Samarkand Osh Teahouse', hours: '11:30 - 15:00', price: '40,000 UZS / Port', desc: 'Layered Samarkand plov with beef, garlic heads, and sesame oil.', img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'overview': [
+                    { title: 'Samarkand Silk Road History', hours: '2700 Year Legacy', price: 'Unesco Heritage', desc: 'The historic crossroads of world cultures, merchants, and scholars.', img: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&q=80' }
+                ]
+            },
+            'bukhara': {
+                'attractions': [
+                    { title: 'Kalon Minaret & Mosque', hours: '08:00 - 19:00', price: '35,000 UZS Ticket', desc: 'Standing 45m tall since 1127 AD. Genghis Khan spared it for its beauty.', img: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80' },
+                    { title: 'Ark Fortress of Bukhara', hours: '09:00 - 18:00', price: '40,000 UZS Ticket', desc: 'Massive 5th-century city-within-a-city fortress of the Emirs of Bukhara.', img: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'cuisine': [
+                    { title: 'Lyabi-Khauz Teahouse', hours: '10:00 - 23:00', price: '50,000 UZS / Meal', desc: 'Dine around the central pool under 400-year-old mulberry trees.', img: 'https://images.unsplash.com/photo-1541518763669-27fef04b14da?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'overview': [
+                    { title: 'Holy Bukhara Heritage', hours: 'Sacred Old City', price: 'Pedestrian Only', desc: 'Living museum city with over 140 architectural monuments.', img: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80' }
+                ]
+            },
+            'khiva': {
+                'attractions': [
+                    { title: 'Ichan Qala Open Air Museum', hours: '24/7 Pedestrian Gate', price: '120,000 UZS All-Pass', desc: 'Fully intact mud-brick medieval city with Kalta Minor turquoise minaret.', img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'cuisine': [
+                    { title: 'Khorezm Tukhum-Barak Teahouse', hours: '11:00 - 21:00', price: '35,000 UZS / Dish', desc: 'Unique Khorezm egg dumplings and green dill shivit oshi noodles.', img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80' }
+                ],
+                'overview': [
+                    { title: 'Khiva Oasis Legacy', hours: 'Khorezm Citadel', price: 'Silk Road Treasure', desc: 'Ancient desert oasis city preserving 2,500 years of Silk Road history.', img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80' }
+                ]
+            }
+        };
+
+        function setRegion(regKey) {
+            currentSelectedRegion = regKey;
+            ['tashkent', 'samarkand', 'bukhara', 'khiva'].forEach(r => {
+                const btn = document.getElementById(`regBtn_${r}`);
+                if (btn) btn.className = (r === regKey) ? 'px-6 py-3 rounded-2xl text-xs font-black transition-all bg-silk-amber text-slate-950 shadow-glow-amber cursor-pointer' : 'px-6 py-3 rounded-2xl text-xs font-black transition-all bg-slate-800 text-slate-300 border border-slate-700 hover:text-white cursor-pointer';
+            });
+            renderRegionContent();
+        }
+
+        function setRegionSubTab(subKey) {
+            currentSelectedRegionSubTab = subKey;
+            ['attractions', 'cuisine', 'overview'].forEach(s => {
+                const btn = document.getElementById(`regSub_${s}`);
+                if (btn) btn.className = (s === subKey) ? 'px-4 py-2 rounded-xl text-xs font-black bg-silk-amber text-slate-950 cursor-pointer' : 'px-4 py-2 rounded-xl text-xs font-black bg-slate-800 text-slate-300 border border-slate-700 hover:text-white cursor-pointer';
+            });
+            renderRegionContent();
+        }
+
+        function renderRegionContent() {
+            const container = document.getElementById('regionDynamicContent');
+            if (!container) return;
+            container.innerHTML = '';
+            const items = (regionDataStore[currentSelectedRegion] && regionDataStore[currentSelectedRegion][currentSelectedRegionSubTab]) || [];
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass-card glass-card-hover rounded-2xl border border-slate-700/80 overflow-hidden flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover">
+                            <span class="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-silk-amber font-extrabold text-[10px] uppercase border border-slate-700">${item.price}</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <span class="text-[10px] text-silk-sky font-bold flex items-center gap-1"><i class="fa-solid fa-clock"></i> ${item.hours}</span>
+                            <h4 class="text-sm font-black text-white">${item.title}</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
 
         const taxiFareMatrix = {
             'tas_airport': {
@@ -1112,7 +1244,7 @@
 
         /* UTILS & CHAT */
         function setLang(lang) {
-            ['EN', 'RU', 'CN', 'DE'].forEach(l => {
+            ['EN', 'UZ', 'RU', 'CN'].forEach(l => {
                 const btn = document.getElementById(`lang_${l}`);
                 if (btn) btn.className = (l === lang) ? 'px-2 py-1 rounded-lg bg-silk-amber text-slate-950 shadow-glow-amber cursor-pointer font-black' : 'px-2 py-1 rounded-lg text-slate-400 hover:text-white cursor-pointer';
             });
@@ -1150,7 +1282,7 @@
         }
         function escapeHtml(str) { return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
-        document.addEventListener('DOMContentLoaded', () => { onRouteSelect(); setBazaarCategory('fruits'); renderDietaryGrid(); });
+        document.addEventListener('DOMContentLoaded', () => { setRegion('tashkent'); onRouteSelect(); setBazaarCategory('fruits'); renderDietaryGrid(); });
     </script>
 </body>
 </html>
