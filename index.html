@@ -80,10 +80,10 @@
         }
 
         .glass-card {
-            background: rgba(21, 32, 53, 0.78);
+            background: rgba(21, 32, 53, 0.85);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
         }
 
@@ -177,12 +177,13 @@
     </div>
 
     <!-- ENHANCED STICKY FLOATING QUICK-ACCESS SIDEBAR (APP DOCK) -->
-    <aside id="appDockContainer" class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-center gap-3 backdrop-blur-md bg-slate-900/80 border border-slate-700/50 rounded-2xl p-2.5 shadow-2xl transition-all">
-        <span class="text-[9px] font-black uppercase text-silk-amber tracking-widest writing-mode-vertical rotate-180 mb-1">Essential Apps</span>
+    <aside id="appDockContainer" class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-center gap-3 backdrop-blur-xl bg-slate-950/90 border border-silk-amber/40 rounded-2xl p-3 shadow-2xl transition-all">
+        <!-- Clean, Right-Side-Up Label -->
+        <span class="text-[10px] font-black uppercase text-silk-amber tracking-widest text-center block pb-1 border-b border-slate-800 w-full">APPS</span>
         
         <!-- Yandex Go -->
         <div class="relative group">
-            <button class="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-amber cursor-pointer">
+            <button onclick="openAppDownloadModal('yandex')" class="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-amber cursor-pointer">
                 <i class="fa-solid fa-taxi"></i>
             </button>
             <div class="absolute right-14 top-1/2 -translate-y-1/2 hidden group-hover:block w-72 p-4 rounded-2xl glass-card border border-amber-500/50 shadow-2xl text-xs space-y-3 backdrop-blur-2xl pointer-events-auto">
@@ -192,15 +193,15 @@
                 </div>
                 <p class="text-xs text-slate-300 leading-relaxed">Official taxi ride-hailing app. Avoid cash disputes by linking international cards.</p>
                 <div class="flex gap-2 pt-1">
-                    <a href="https://apps.apple.com/app/yandex-go/id1437157286" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=ru.yandex.taxi" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
+                    <a href="https://apps.apple.com/app/yandex-go/id1437157286" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-silk-amber text-slate-950 font-black text-[11px] text-center flex items-center justify-center gap-1.5 shadow-glow-amber"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=ru.yandex.taxi" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-slate-800 text-white border border-slate-700 font-bold text-[11px] text-center flex items-center justify-center gap-1.5"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
                 </div>
             </div>
         </div>
 
         <!-- 2GIS -->
         <div class="relative group">
-            <button class="w-11 h-11 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-sky cursor-pointer">
+            <button onclick="openAppDownloadModal('2gis')" class="w-11 h-11 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-sky cursor-pointer">
                 <i class="fa-solid fa-map-location-dot"></i>
             </button>
             <div class="absolute right-14 top-1/2 -translate-y-1/2 hidden group-hover:block w-72 p-4 rounded-2xl glass-card border border-sky-500/50 shadow-2xl text-xs space-y-3 backdrop-blur-2xl pointer-events-auto">
@@ -210,15 +211,15 @@
                 </div>
                 <p class="text-xs text-slate-300 leading-relaxed">Offline city navigation showing exact building entrance gates & bus route numbers.</p>
                 <div class="flex gap-2 pt-1">
-                    <a href="https://apps.apple.com/app/2gis-offline-maps-navigation/id481627348" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=ru.dublgis.dgismobile" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
+                    <a href="https://apps.apple.com/app/2gis-offline-maps-navigation/id481627348" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-silk-sky text-slate-950 font-black text-[11px] text-center flex items-center justify-center gap-1.5 shadow-glow-sky"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=ru.dublgis.dgismobile" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-slate-800 text-white border border-slate-700 font-bold text-[11px] text-center flex items-center justify-center gap-1.5"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
                 </div>
             </div>
         </div>
 
         <!-- Uzrailways -->
         <div class="relative group">
-            <button class="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-emerald cursor-pointer">
+            <button onclick="openAppDownloadModal('uzrailways')" class="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-emerald cursor-pointer">
                 <i class="fa-solid fa-train"></i>
             </button>
             <div class="absolute right-14 top-1/2 -translate-y-1/2 hidden group-hover:block w-72 p-4 rounded-2xl glass-card border border-emerald-500/50 shadow-2xl text-xs space-y-3 backdrop-blur-2xl pointer-events-auto">
@@ -228,15 +229,15 @@
                 </div>
                 <p class="text-xs text-slate-300 leading-relaxed">Book Afrosiyob high-speed bullet train tickets directly at official state prices.</p>
                 <div class="flex gap-2 pt-1">
-                    <a href="https://apps.apple.com/app/uzrailways-tickets/id1527715784" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=uz.railway.tickets" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
+                    <a href="https://apps.apple.com/app/uzrailways-tickets/id1527715784" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-silk-emerald text-slate-950 font-black text-[11px] text-center flex items-center justify-center gap-1.5 shadow-glow-emerald"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=uz.railway.tickets" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-slate-800 text-white border border-slate-700 font-bold text-[11px] text-center flex items-center justify-center gap-1.5"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
                 </div>
             </div>
         </div>
 
         <!-- Uzum Tezkor -->
         <div class="relative group">
-            <button class="w-11 h-11 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all cursor-pointer">
+            <button onclick="openAppDownloadModal('uzum')" class="w-11 h-11 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all cursor-pointer">
                 <i class="fa-solid fa-utensils"></i>
             </button>
             <div class="absolute right-14 top-1/2 -translate-y-1/2 hidden group-hover:block w-72 p-4 rounded-2xl glass-card border border-purple-500/50 shadow-2xl text-xs space-y-3 backdrop-blur-2xl pointer-events-auto">
@@ -246,15 +247,15 @@
                 </div>
                 <p class="text-xs text-slate-300 leading-relaxed">Order hot plov, shashlik, fresh fruits, and groceries delivered in 30 minutes.</p>
                 <div class="flex gap-2 pt-1">
-                    <a href="https://apps.apple.com/app/uzum-tezkor-food-delivery/id1661601614" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=uz.uzum.tezkor" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
+                    <a href="https://apps.apple.com/app/uzum-tezkor-food-delivery/id1661601614" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-purple-500 text-slate-950 font-black text-[11px] text-center flex items-center justify-center gap-1.5"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=uz.uzum.tezkor" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-slate-800 text-white border border-slate-700 font-bold text-[11px] text-center flex items-center justify-center gap-1.5"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
                 </div>
             </div>
         </div>
 
         <!-- Payme / Click -->
         <div class="relative group">
-            <button class="w-11 h-11 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-rose cursor-pointer">
+            <button onclick="openAppDownloadModal('click')" class="w-11 h-11 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/40 flex items-center justify-center text-xl hover:scale-110 transition-all shadow-glow-rose cursor-pointer">
                 <i class="fa-solid fa-qrcode"></i>
             </button>
             <div class="absolute right-14 top-1/2 -translate-y-1/2 hidden group-hover:block w-72 p-4 rounded-2xl glass-card border border-rose-500/50 shadow-2xl text-xs space-y-3 backdrop-blur-2xl pointer-events-auto">
@@ -264,12 +265,44 @@
                 </div>
                 <p class="text-xs text-slate-300 leading-relaxed">Universal QR payment standard used across cafes, markets, and shops.</p>
                 <div class="flex gap-2 pt-1">
-                    <a href="https://apps.apple.com/app/click-up/id1184310574" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
-                    <a href="https://play.google.com/store/apps/details?id=uz.click.clickpass" target="_blank" class="flex-1 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-700 text-white font-bold text-[10px] text-center flex items-center justify-center gap-1"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
+                    <a href="https://apps.apple.com/app/click-up/id1184310574" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-rose-500 text-slate-950 font-black text-[11px] text-center flex items-center justify-center gap-1.5 shadow-glow-rose"><i class="fa-brands fa-apple text-xs"></i> App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=uz.click.clickpass" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl bg-slate-800 text-white border border-slate-700 font-bold text-[11px] text-center flex items-center justify-center gap-1.5"><i class="fa-brands fa-google-play text-xs"></i> Google Play</a>
                 </div>
             </div>
         </div>
     </aside>
+
+
+    <!-- APP DOWNLOAD MODAL FOR CLICK & DIRECT LINKS -->
+    <div id="appDownloadModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md transition-all">
+        <div class="glass-card max-w-md w-full rounded-3xl border border-silk-amber/40 shadow-2xl p-6 sm:p-8 relative space-y-5">
+            <button onclick="closeAppDownloadModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:text-white border border-slate-700 flex items-center justify-center cursor-pointer">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+
+            <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+                <div id="modalAppIcon" class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-2xl font-black shrink-0">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <div>
+                    <h3 id="modalAppName" class="text-lg font-black font-display text-white">Yandex Go</h3>
+                    <span id="modalAppBadge" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 text-[9px] font-black uppercase">Taxi & Rideshare</span>
+                </div>
+            </div>
+
+            <p id="modalAppDesc" class="text-xs text-slate-300 leading-relaxed">Official taxi ride-hailing app. Avoid cash disputes by linking international cards.</p>
+
+            <div class="space-y-3 pt-2">
+                <a id="modalIosLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-silk-amber text-slate-950 font-black text-xs shadow-glow-amber flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-apple text-base"></i> Download on App Store (iOS)
+                </a>
+                <a id="modalAndroidLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-slate-800 text-white border border-slate-700 font-black text-xs flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-google-play text-base"></i> Download on Google Play (Android)
+                </a>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Global Toast Notification -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-silk-850 text-white px-5 py-4 rounded-2xl border border-silk-amber/40 shadow-2xl backdrop-blur-2xl">
@@ -861,40 +894,45 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                    <div class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between">
+                    <div onclick="openAppDownloadModal('yandex')" class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between cursor-pointer">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl font-black mb-4"><i class="fa-solid fa-taxi"></i></div>
                             <h3 class="text-base font-black text-white">Yandex Go</h3>
                             <p class="text-xs text-slate-300 mt-2">Primary rideshare. Avoid cash disputes by linking international cards.</p>
                         </div>
+                        <span class="text-[11px] font-black text-silk-amber mt-4 block">Download App →</span>
                     </div>
-                    <div class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between">
+                    <div onclick="openAppDownloadModal('2gis')" class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between cursor-pointer">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-2xl font-black mb-4"><i class="fa-solid fa-map-location-dot"></i></div>
                             <h3 class="text-base font-black text-white">2GIS Maps</h3>
                             <p class="text-xs text-slate-300 mt-2">Offline maps showing exact building entrance gates and bus route numbers.</p>
                         </div>
+                        <span class="text-[11px] font-black text-silk-sky mt-4 block">Download App →</span>
                     </div>
-                    <div class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between">
+                    <div onclick="openAppDownloadModal('uzrailways')" class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between cursor-pointer">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl font-black mb-4"><i class="fa-solid fa-train"></i></div>
                             <h3 class="text-base font-black text-white">Uzrailways</h3>
                             <p class="text-xs text-slate-300 mt-2">Book Afrosiyob high-speed bullet train tickets directly at official rates.</p>
                         </div>
+                        <span class="text-[11px] font-black text-silk-emerald mt-4 block">Download App →</span>
                     </div>
-                    <div class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between">
+                    <div onclick="openAppDownloadModal('uzum')" class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between cursor-pointer">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl font-black mb-4"><i class="fa-solid fa-utensils"></i></div>
                             <h3 class="text-base font-black text-white">Uzum Tezkor</h3>
                             <p class="text-xs text-slate-300 mt-2">Order hot plov, shashlik, fresh fruits, and groceries in 30 minutes.</p>
                         </div>
+                        <span class="text-[11px] font-black text-purple-400 mt-4 block">Download App →</span>
                     </div>
-                    <div class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between">
+                    <div onclick="openAppDownloadModal('click')" class="glass-card glass-card-hover p-6 rounded-3xl border border-slate-700 flex flex-col justify-between cursor-pointer">
                         <div>
                             <div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-2xl font-black mb-4"><i class="fa-solid fa-qrcode"></i></div>
                             <h3 class="text-base font-black text-white">Click & Payme</h3>
                             <p class="text-xs text-slate-300 mt-2">Universal QR payment standard used across cafes, markets, and shops.</p>
                         </div>
+                        <span class="text-[11px] font-black text-rose-400 mt-4 block">Download App →</span>
                     </div>
                 </div>
             </div>
@@ -1070,6 +1108,31 @@
         let currentDietFilter = 'all';
         let currentSelectedRegion = 'tashkent';
         let currentSelectedRegionSubTab = 'attractions';
+
+        const appStoreData = {
+            'yandex': { name: 'Yandex Go', badge: 'Taxi & Rideshare', desc: 'Official taxi ride-hailing app. Link foreign Visa/Mastercard to avoid cash disputes.', ios: 'https://apps.apple.com/app/yandex-go/id1437157286', android: 'https://play.google.com/store/apps/details?id=ru.yandex.taxi', icon: 'fa-taxi', color: 'text-amber-400 bg-amber-500/20 border-amber-500/40' },
+            '2gis': { name: '2GIS Maps', badge: 'Navigation & Metro', desc: 'Offline city navigation showing exact building entrance gates & bus route numbers.', ios: 'https://apps.apple.com/app/2gis-offline-maps-navigation/id481627348', android: 'https://play.google.com/store/apps/details?id=ru.dublgis.dgismobile', icon: 'fa-map-location-dot', color: 'text-sky-400 bg-sky-500/20 border-sky-500/40' },
+            'uzrailways': { name: 'Uzrailways', badge: 'Bullet Train', desc: 'Book Afrosiyob high-speed bullet train tickets directly at official state prices.', ios: 'https://apps.apple.com/app/uzrailways-tickets/id1527715784', android: 'https://play.google.com/store/apps/details?id=uz.railway.tickets', icon: 'fa-train', color: 'text-emerald-400 bg-emerald-500/20 border-emerald-500/40' },
+            'uzum': { name: 'Uzum Tezkor', badge: 'Food Delivery', desc: 'Order hot plov, shashlik, fresh fruits, and groceries delivered in 30 minutes.', ios: 'https://apps.apple.com/app/uzum-tezkor-food-delivery/id1661601614', android: 'https://play.google.com/store/apps/details?id=uz.uzum.tezkor', icon: 'fa-utensils', color: 'text-purple-400 bg-purple-500/20 border-purple-500/40' },
+            'click': { name: 'Click & Payme', badge: 'QR Payments', desc: 'Universal QR payment standard used across cafes, markets, and shops.', ios: 'https://apps.apple.com/app/click-up/id1184310574', android: 'https://play.google.com/store/apps/details?id=uz.click.clickpass', icon: 'fa-qrcode', color: 'text-rose-400 bg-rose-500/20 border-rose-500/40' }
+        };
+
+        function openAppDownloadModal(appKey) {
+            const data = appStoreData[appKey];
+            if (!data) return;
+            document.getElementById('modalAppName').innerText = data.name;
+            document.getElementById('modalAppBadge').innerText = data.badge;
+            document.getElementById('modalAppDesc').innerText = data.desc;
+            document.getElementById('modalIosLink').href = data.ios;
+            document.getElementById('modalAndroidLink').href = data.android;
+            document.getElementById('modalAppIcon').className = `w-12 h-12 rounded-2xl border flex items-center justify-center text-2xl font-black shrink-0 ${data.color}`;
+            document.getElementById('modalAppIcon').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+            document.getElementById('appDownloadModal').classList.remove('hidden');
+        }
+
+        function closeAppDownloadModal() {
+            document.getElementById('appDownloadModal').classList.add('hidden');
+        }
 
         function toggleMobileAppDock() {
             const dock = document.getElementById('appDockContainer');
